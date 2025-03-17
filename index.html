@@ -5,17 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do 리스트</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: blue; /* 텍스트 색상을 파란색으로 변경 */
+        }
+        #calendar {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        /* 체크 아이콘 색상을 파란색으로 변경 */
+        .check-icon {
+            color: blue;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>To-Do 리스트 작성 ✅</h1>
+        <h1><span class="check-icon">✅</span> 히지 To-Do LIST</h1>
         <div class="input-container">
             <input type="text" id="todo-input" placeholder="할 일을 입력하세요...">
             <button id="add-btn">추가</button>
         </div>
         <ul id="todo-list"></ul>
+        
+        <div id="calendar"></div>
     </div>
 
     <script type="module" src="main.js"></script>
+    <script>
+        // 현재 날짜를 표시하는 달력 생성
+        const calendarDiv = document.getElementById('calendar');
+        
+        const displayCurrentDate = () => {
+            const currentDate = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            const formattedDate = currentDate.toLocaleDateString('ko-KR', options);
+            calendarDiv.innerHTML = `<strong>현재 날짜:</strong> ${formattedDate}`;
+        };
+
+        displayCurrentDate();
+    </script>
 </body>
 </html>
